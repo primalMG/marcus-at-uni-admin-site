@@ -19,18 +19,53 @@
     </script>   
     <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />  
+
     <title>Marcus At uni Admin Page</title>
 </head>
 <body>
   <div id="adminLogin">
-    <form>
-      <h2>Should you be here?</h2>>
+  
+      <h2>Should you be here?</h2>
       <input id="email" type="text"></input>
       <input id="pass" type="password"></input>
-      <button id="login">Login</button>>
-    </form>>
-  </div>>  
+      <button id="login">Login</button>
 
+  </div>
+
+
+  <div id="adminHome" style="display:none;">
+   <h1>hi friend</h1>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+
+
+  <script>
+    var socket = io();
+
+    var login = document.getElementById('login');
+    var email = document.getElementById('email');
+    var pass = document.getElementById('pass');
+    var loginScreen = document.getElementById('adminLogin');
+    var adminHome = document.getElementById('adminHome');
+
+    login.onclick = function(){
+         socket.emit('join',{name:email.value,pass:pass.value});
+       }
+
+    socket.on('loginResponse', function(data){
+      if(data.success){
+        loginScreen.style.display = 'none';
+        adminHome.style.display = 'inline';
+      } else 
+        alert("unsuccessful");
+    });
+
+  </script>
 
 </body>
 </html>
