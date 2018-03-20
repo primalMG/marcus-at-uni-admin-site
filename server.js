@@ -13,12 +13,31 @@ http.listen(2000,function(){
     console.log('listening on 2000');
 });
 
+
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: 'https://marcus-at-uni.firebaseio.com'
 });
 
 var ref = admin.database().ref
+var databaseRef = admin.database().ref().child('Recipe');
+
+var data = {
+    name: "Buffalo wings",
+    price: "££",
+    Ingredients: {
+        Ing1: "Wings",
+        Ing2: "Butter",
+        Ing3: "Chilli sauce"
+    },
+    Steps: {
+        Step1: "dash wings in oven",
+        Step2: "dash butter and chilli sauce in pan",
+        Step3: "dash wings into pan and let them do a madness together"
+    }
+}
+
+var newRecipe = databaseRef.push(data);
 
 var socketList = {};
 
