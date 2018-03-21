@@ -20,29 +20,26 @@ admin.initializeApp({
     databaseURL: 'https://marcus-at-uni.firebaseio.com'
 });
 
-var ref = admin.database().ref
-var databaseRef = admin.database().ref().child('Recipe');
+var ref = admin.database().ref();
+var recipeRef = ref.child('Recipe');
 
-databaseRef.child('Buffalo Wings').set ({
-    name: "Buffalo Wings",
-    price: "££",
-    img: "",
-    Ingredients: {
-        Ing1: "Wings",
-        Ing2: "Butter",
-        Ing3: "Chilli sauce"
-    },
-    Steps: {
-        Step1: "dash wings in oven",
-        Step2: "dash butter and chilli sauce in pan",
-        Step3: "dash wings into pan and let them do a madness together"
+var newRecipeRef = recipeRef.push();
+var recipeID = newRecipeRef.key;
+
+newRecipeRef.set({
+    name: "Oxtail Stew",
+    recipeID: recipeID,
+    Ingredients : {
+        
+        Oxtail: "Oxtail",
+        Rice: "Rice n Peas",
     }
-    
-  
 });
-var data = {
 
-}
+console.log(recipeID);
+
+
+
 
 
 var socketList = {};
