@@ -5,8 +5,9 @@ var io = require('socket.io')(http);
 var serviceAccount = require('./Marcus at uni service account.json');
 
 app.get('/',function(req, res){
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/index.html')
 });
+
 
 
 http.listen(2000,function(){
@@ -22,9 +23,10 @@ admin.initializeApp({
 var ref = admin.database().ref
 var databaseRef = admin.database().ref().child('Recipe');
 
-var data = {
-    name: "Buffalo wings",
+databaseRef.child('Buffalo Wings').set ({
+    name: "Buffalo Wings",
     price: "££",
+    img: "",
     Ingredients: {
         Ing1: "Wings",
         Ing2: "Butter",
@@ -35,9 +37,13 @@ var data = {
         Step2: "dash butter and chilli sauce in pan",
         Step3: "dash wings into pan and let them do a madness together"
     }
+    
+  
+});
+var data = {
+
 }
 
-var newRecipe = databaseRef.push(data);
 
 var socketList = {};
 

@@ -35,10 +35,10 @@
 
   <div id="adminHome" style="display:none;">
    <h1>hi friend</h1>
-   <button id="addRecipe">Add Recipe</button>
+   <button id="newRecipe">Add Recipe</button>
   </div>
 
-  <div id="addRecipe" style="display:none">
+  <div id="newRecipeView" style="display:none">
     <h1>hi even bigger friend</h1>
   </div>
 
@@ -69,6 +69,16 @@
       } else 
         alert("unsuccessful");
     });
+
+    //adding Recipes
+    var newRecipe = document.getElementById('newRecipe');
+    var newRecipeView = document.getElementById('newRecipeView')
+
+    newRecipe.onclick = function(){
+      adminHome.style.display = 'none';
+      newRecipeView.style.display = 'inline';
+    }
+
 
   </script>
 
