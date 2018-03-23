@@ -40,6 +40,22 @@
 
   <div id="newRecipeView" style="display:none">
     <h1>hi even bigger friend</h1>
+    <form>
+      <h4>Name:<input type="text"></input></h4>
+      <h4>Price:<select>
+        <option value="£">£</option>
+        <option value="££">££</option>
+        <option value="£££">£££</option>
+        <option value="££££">££££</option>
+      </select></h4>
+      <h4>Ingredients:</h4>
+        <input type="text" placeholder="Ingredient 1"></input></br>
+        <input type="text" placeholder="Ingredient 2"></input></br>
+        <input type="text" placeholder="Ingredient 3"></input></br>
+        <input type="text" placeholder="Ingredient 4"></input>
+
+    </form>
+
   </div>
 
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
@@ -78,6 +94,10 @@
       adminHome.style.display = 'none';
       newRecipeView.style.display = 'inline';
     }
+
+    // addRecipeTodatabase.onclick = function(){
+    //   socket.emit('AddRecipe')
+    // }
 
 
   </script>

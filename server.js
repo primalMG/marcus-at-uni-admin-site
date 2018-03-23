@@ -27,18 +27,34 @@ var newRecipeRef = recipeRef.push();
 var recipeID = newRecipeRef.key;
 
 newRecipeRef.set({
-    name: "Oxtail Stew",
+    name: "Cous Cous",
+    price: "£",
     recipeID: recipeID,
     Ingredients : {
-        
-        Oxtail: "Oxtail",
-        Rice: "Rice n Peas",
+        Ing1: "Cous Cous",
+        Ing2: "Spinach",
+        Ing3: "Kale",
+        Ing4: "Sweet peppers"
+    },
+    steps: {
+        step1: "Dash cous cous in a bowl",
+        step2: "dash veg in pan with oil",
+        step3: "add Cous Cous to pan"
     }
 });
 
 console.log(recipeID);
 
 
+var tipsRef = ref.child('Tips').push();
+var tipsID = tipsRef.key;
+
+tipsRef.set({
+    name: "How to cook Pasta",
+    Brief: "How to make the perfect pasta every time..",
+    tipsID: tipsID,
+    Description: "making some bomb ass pasta goes a little something like this.."
+});
 
 
 
