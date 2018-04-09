@@ -24,19 +24,22 @@ var newRecipeRef = recipeRef.push();
 var recipeID = newRecipeRef.key;
 
 newRecipeRef.set({
-    name: "Cous Cous",
+    name: "Buffalo Wings",
     price: "£",
     recipeID: recipeID,
     Ingredients : {
-        Ing1: "Cous Cous",
-        Ing2: "Spinach",
-        Ing3: "Kale",
-        Ing4: "Sweet peppers"
+        Ing1: "Chicken Wings",
+        Ing2: "Chilli Sauce",
+        Ing3: "Butter",
+        Ing4: "Seasoning",
+        Ing5: "Seasoing"
     },
     steps: {
-        step1: "Dash cous cous in a bowl",
-        step2: "dash veg in pan with oil",
-        step3: "add Cous Cous to pan"
+        step1: "Seasoning the wings.",
+        step2: "Put them in the oven at gas mark 5 for 45mins.",
+        step3: "Mix the butter and Chilli sauce in a pan",
+        step4: "Put the wings into the pan and stir the sauce until covered",
+        step5: "Serve with chips"
     }
 });
 
