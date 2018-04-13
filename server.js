@@ -8,6 +8,9 @@ app.get('/',function(req, res){
     res.sendFile(__dirname + '/index.html')
 });
 
+
+
+
 http.listen(2000,function(){
     console.log('listening on 2000');
 });
@@ -86,7 +89,7 @@ io.on('connection', function(socket){
 
     // socket.on('AddRecipe', function(data){
     //     if requirements met
-    //     recipeRef.set()
+    //        recipeRef.set();
     //     else{
     //         return what needs to be comeplete
     //     } 

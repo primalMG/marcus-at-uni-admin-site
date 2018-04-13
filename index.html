@@ -23,43 +23,10 @@
     <title>Marcus At uni Admin Page</title>
 </head>
 <body>
-  <div id="adminLogin">
-  
-      <h2>Should you be here?</h2>
-      <input id="email" type="text"></input>
-      <input id="pass" type="password"></input>
-      <button id="login">Login</button>
 
-  </div>
-
-
-  <div id="adminHome" style="display:none;">
+  <div id="adminHome">
    <h1>hi friend</h1>
    <button id="newRecipe">Add Recipe</button>
-  </div>
-
-  <div id="newRecipeView" style="display:none">
-    <h1>hi even bigger friend</h1>
-    <form>
-      <h4>Name:<input id="recipeName" type="text" placeholder="Recipe Name"></input></h4>
-      <h4>Price:<select>
-        <option value="£">£</option>
-        <option value="££">££</option>
-        <option value="£££">£££</option>
-        <option value="££££">££££</option>
-      </select></h4>
-      <h4>Ingredients:</h4>
-        <input type="text" id="ingOne" placeholder="Ingredient 1"></input></br>
-        <input type="text" id="ingTwo" placeholder="Ingredient 2"></input></br>
-        <input type="text" id="ingThree" placeholder="Ingredient 3"></input></br>
-        <input type="text" id="ingFour" placeholder="Ingredient 4"></input></br>
-      <h4>Steps:</h4>
-      <input type="text" id="stepOne" placeholder="Step 1"></input></br>  
-      <input type="text" id="stepTwo" placeholder="Step 2"></input></br>
-      <input type="text" id="stepThree" placeholder="Step 3"></input></br>
-      <input type="text" id="stepFour" placeholder="Step 4"></input></br>
-    </form>
-
   </div>
 
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
@@ -68,13 +35,11 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 
-
+  <script src="index.js"></script>
   <script>
+    
     var socket = io();
 
-    var login = document.getElementById('login');
-    var email = document.getElementById('email');
-    var pass = document.getElementById('pass');
     var loginScreen = document.getElementById('adminLogin');
     var adminHome = document.getElementById('adminHome');
 
@@ -101,25 +66,6 @@
 
     var recipeName = document.getElementById('recipeName');
     
-
-    //ingredients varibles
-    var ingOne = document.getElementById('ingOne');
-    var ingTwo = document.getElementById('ingTwo');
-    var ingThree = document.getElementById('ingThree');
-    var ingFour = document.getElementById('ingFour');
-
-    //steps variables
-    var stepOne = document.getElementById('stepOne');
-    var stepTwo = document.getElementById('stepTwo');
-    var stepThree = document.getElementById('stepThree');
-    var stepFour = document.getElementById('stepFour');
-
-
-    addRecipeTodatabase.onclick = function(){
-      socket.emit('AddRecipe',{name:recipeName.value,ingOne:ingOne.value,
-              ingTwo:ingTwo.value,stepOne:stepOne.value,})
-    }
-
 
   </script>
 
