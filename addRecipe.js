@@ -1,12 +1,9 @@
     
     var database = firebase.database();
     var recipeRef = database.ref().child('Recipe');
-
-    //getting the Recipe Key
-    //var recipeID = newRecipeRef.key;
-
+    
+    
     var names = document.getElementById('name');
-
     var currentPrice = document.getElementById('currentPrice');
     var price = currentPrice.options[currentPrice.selectedIndex].text;
     
@@ -22,10 +19,24 @@
     var stepThree = document.getElementById('stepThree');
     var stepFour = document.getElementById('stepFour');
 
+    var img = document.getElementById('img');
+
+    img.addEventListener('change', function(e){
+        var imgs = e.target.files[0];
+
+        var storageRef = firebase.storage().ref('Food_pics/' + imgs.name);
+
+        var upload = storageRef.put(imgs);
+    });
+        
+
     
     function addRecipe(){
+        var newRecipeRef = recipeRef.push().key;
+
        var recipeData = {
             name: names.value,
+            recipeID: newRecipeRef,    
             price: price,
             //img: imageURL,
             Ingredients : {
@@ -42,7 +53,7 @@
             }
         };
 
-        var newRecipeRef = recipeRef.push().key;
+           
 
         var newRecipe = {};
         newRecipe['/Recipe/' + newRecipeRef] = recipeData;
