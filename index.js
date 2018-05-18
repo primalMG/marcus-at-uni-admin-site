@@ -1,3 +1,17 @@
+
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyBX9d_NmxSAUMwSt4w7dDkel1hk_3eTiRw",
+  authDomain: "marcus-at-uni.firebaseapp.com",
+  databaseURL: "https://marcus-at-uni.firebaseio.com",
+  projectId: "marcus-at-uni",
+  storageBucket: "marcus-at-uni.appspot.com",
+  messagingSenderId: "47512234516"
+};
+firebase.initializeApp(config);
+ 
+
+
 var database = firebase.database().ref();
 
 //Login variables
@@ -29,6 +43,7 @@ recipeRef.on('value', snap => {
         btnEdit.class = 'editRecipe';
         btnEdit.innerHTML = ' Edit';
         btnEdit.setAttribute('childKey', key);
+        btnEdit.style.color = "#6a3cc4";
         //btnEdit.addEventListener('click', btnEditRecipe);
         $li.append(btnEdit)
     
@@ -37,6 +52,7 @@ recipeRef.on('value', snap => {
         btnDelete.class = 'deleteRecipe';
         btnDelete.innerHTML = ' Delete';
         btnDelete.setAttribute('childKey', key);
+        btnDelete.style.color = "#e20f24";
         btnDelete.addEventListener('click', btnDeleteClicked);
 
         $li.append(btnDelete)

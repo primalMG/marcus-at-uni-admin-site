@@ -5,50 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyBX9d_NmxSAUMwSt4w7dDkel1hk_3eTiRw",
-        authDomain: "marcus-at-uni.firebaseapp.com",
-        databaseURL: "https://marcus-at-uni.firebaseio.com",
-        projectId: "marcus-at-uni",
-        storageBucket: "marcus-at-uni.appspot.com",
-        messagingSenderId: "47512234516"
-      };
-      firebase.initializeApp(config);
-    </script>   
 </head>
 <body>
     <div id="newRecipeView" class="container">
         <h1>hi even bigger friend</h1>
         <form>
-          <h4>Name:<input id="name" type="text" placeholder="Recipe Name"></input></h4>
-          <h4>Price:<select id="currentPrice">
+          <h4>Name:<input id="name" type="text" data-key="name" class="recipeDetails" placeholder="Recipe Name"></h4>
+          <h4>Price:<select id="currentPrice" data-key="Price" class="recipeDetails">
             <option value="£">£</option>
             <option value="££">££</option>
             <option value="£££">£££</option>
             <option value="££££">££££</option>
           </select></h4>
+          <h4>Serving<input id="serving" type="text" data-key="serving" class="recipeDetails" placeholder="Serving amount"></h4>
           <h4>Ingredients:</h4>
-            <input type="text" id="ingOne" placeholder="Ingredient 1"></input></br>
-            <input type="text" id="ingTwo" placeholder="Ingredient 2"></input></br>
-            <input type="text" id="ingThree" placeholder="Ingredient 3"></input></br>
-            <input type="text" id="ingFour" placeholder="Ingredient 4"></input></br>
+            <div id="ing">
+            <button onclick="addIngredient()" type="button">Add Ingredient</button>
+            </div>
+            <div id="step">
+              <button onclick="addStep()" type="button">Add Step</button>
+            </div>
           <h4>Steps:</h4>
-          <input type="text" id="stepOne" placeholder="Step 1"></input></br>  
-          <input type="text" id="stepTwo" placeholder="Step 2"></input></br>
-          <input type="text" id="stepThree" placeholder="Step 3"></input></br>
-          <input type="text" id="stepFour" placeholder="Step 4"></input></br></br>
-    
            <input type="file"  id="img" value="Pick"></input></br></br>
 
           <button onclick="addRecipe()" id="btnAdd" type="button">addRecipe</button>
         </form>
     
       </div>
+
+
 
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

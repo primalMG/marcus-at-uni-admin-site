@@ -4,9 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+    <title>Shop Locations</title>
 </head>
 <body>
-    
+        <section id="add-user-module" >
+                
+                <form>
+                    <h2>Add Shop</h2>
+                    Name:<br>
+                    <input type='text' data-shop='name' class='shop-location'><br>
+                    Postcode:<br>
+                    <input type='text' data-shop='subName' class='shop-location'><br>
+                    Latitude:<br>
+                    <input type='text' data-shop='lat' class='shop-location'><br>
+                    Longitude:<br>
+                    <input type='text' data-shop='long' class='shop-location' value="-"><br>
+                    <button type='button' onclick="addShop()">add Shop</button>
+                </form>
+            </section>
+
+    <div class="container">
+        <div id="shopLocation">
+            <ul id="shopList"></ul>
+
+            <div id="shopDetails"></div>
+        </div>
+    </div>
+
+    <script src="shopLocation.js"></script>
 </body>
 </html>
