@@ -12,29 +12,31 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var tipRef = database.ref().child('Tips');
 
-tipRef.on('value', snap => {
+var tipList = document.getElementById('tipsList');
+
+// tipRef.on('value', snap => {
     
-    tipList.innerHTML = ""
+//     tipList.innerHTML = ""
 
-        snap.forEach(childSnap => {
-            let key = childSnap.key,
-                value = childSnap.val();
-            let $li = document.createElement('li');
+//         snap.forEach(childSnap => {
+//             let key = childSnap.key,
+//                 value = childSnap.val();
+//             let $li = document.createElement('li');
 
-            $li.innerHTML = value.name;
+//             $li.innerHTML = value.name;
 
-            let btnDelete = document.createElement("span");
-            btnDelete.class = "deleteTip";
-            btnDelete.innerHTML = ' Delete';
-            btnDelete.setAttribute('TipchildKey', key);
-            btnDelete.style.color = "#e20f24";
-            btnDelete.addEventListener('click', DeleteTip)
+//             let btnDelete = document.createElement("span");
+//             btnDelete.class = "deleteTip";
+//             btnDelete.innerHTML = ' Delete';
+//             btnDelete.setAttribute('TipchildKey', key);
+//             btnDelete.style.color = "#e20f24";
+//             btnDelete.addEventListener('click', btnDeleteClicked)
 
-            $li.append(btnDelete);
-            $li.setAttribute('keyY', key);
-            tipList.append($li);
-        });
-});
+//             $li.append(btnDelete);
+//             $li.setAttribute('keyY', key);
+//             tipList.append($li);
+//         });
+// });
 
     
 var names = document.getElementById('name');
@@ -77,6 +79,18 @@ index[id] = -1;
     }
 
 }
+
+function btnDeleteClicked(event){
+
+    event.stopPropagation();
+
+    var recipeID = event.target.getAttribute('childKey');
+
+    const recipeRef = database.child('Recipe/' + recipeID);
+
+    recipeRef.remove();
+}
+
 
 function getTipID(){
     var emptyIndex = index.indexOf(-1);
