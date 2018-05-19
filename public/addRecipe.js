@@ -30,10 +30,6 @@ var config = {
     stepIndex.push(0);
     //index.push(1)
 
-    function addingRecipe(ingredient, step){
-        const ingredients = ingredient.getAttribute('data-ingredient-type');
-        const steps = step.getAttribute("data-steps-type");
-    }
 
     function addIngredient(){
         var div = document.createElement('div');

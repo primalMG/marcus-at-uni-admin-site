@@ -34,8 +34,10 @@ var home = document.getElementById('adminHome');
 
 
 var recipeRef = database.child('Recipe');
+var tipsRef = database.child('Tips');
 
 const recipeList = document.getElementById('recipeList');
+const tipList = document.getElementById('tipsList');
 
 recipeRef.on('value', snap => {
 
@@ -51,7 +53,7 @@ recipeRef.on('value', snap => {
 
 
         //Edit a recipe
-        let btnEdit = document.createElement('span');
+        let btnEdit = document.createElement("span");
         btnEdit.class = 'editRecipe';
         btnEdit.innerHTML = ' Edit';
         btnEdit.setAttribute('childKey', key);
@@ -72,11 +74,32 @@ recipeRef.on('value', snap => {
         $li.addEventListener('click', recipeClicked)
         recipeList.append($li);
     });
-    //console.log(snap);
-
-    
-
 });
+
+tipsRef.on('value', snap => {
+    
+    tipList.innerHTML = ""
+
+        snap.forEach(childSnap => {
+            let key = childSnap.key,
+                value = childSnap.val();
+            let $li = document.createElement('li');
+
+            $li.innerHTML = value.name;
+
+            let btnDelete = document.createElement("span");
+            btnDelete.class = "deleteTip";
+            btnDelete.innerHTML = ' Delete';
+            btnDelete.setAttribute('TipchildKey', key);
+            btnDelete.style.color = "#e20f24";
+            btnDelete.addEventListener('click', DeleteTip)
+
+            $li.append(btnDelete);
+            $li.setAttribute('keyY', key);
+            tipList.append($li);
+        });
+});
+
 
 function recipeClicked(e){
     var recipeID = e.target.getAttribute('keyy');
@@ -116,3 +139,13 @@ function btnDeleteClicked(event){
     recipeRef.remove();
 }
 
+function DeleteTip(event){
+    
+    event.stopPropagation();
+
+    var tipID = event.target.getAttribute('TipchildKey');
+
+    const recipeRef = database.child('Tips/' + tipID);
+
+    recipeRef.remove();
+}
