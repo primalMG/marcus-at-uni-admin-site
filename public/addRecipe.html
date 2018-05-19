@@ -10,8 +10,32 @@
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Marcus At Uni - Admin</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="addRecipe.html">Add Recipe</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="addTip.html">Add tip</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="shopLocation.html">Shops</a>
+              </li>
+            
+          </ul>
+        </div>
+      </nav>
     <div id="newRecipeView" class="container">
-        <h1>hi even bigger friend</h1>
+      <div class="jumbotron">
+
+      
+        <h1>Add Recipe</h1>
         <form>
           <h4>Name:<input id="name" type="text" data-key="name" class="recipeDetails" placeholder="Recipe Name"></h4>
           <h4>Price:<select id="currentPrice" data-key="Price" class="recipeDetails">
@@ -21,21 +45,23 @@
             <option value="££££">££££</option>
           </select></h4>
           <h4>Serving<input id="serving" type="text" data-key="serving" class="recipeDetails" placeholder="Serving amount"></h4>
-          <h4>Ingredients:</h4>
-            <div id="ing">
-            <button onclick="addIngredient()" type="button">Add Ingredient</button>
+          
+            <div id="ing"><h4>Ingredients: <button onclick="addIngredient()" type="button">Add Ingredient</button></h4>
+            
             </div>
-            <div id="step">
-              <button onclick="addStep()" type="button">Add Step</button>
+          
+          
+              <div id="step"><h5>Steps: <button onclick="addStep()" type="button">Add Step</button> </h5>
+              
             </div>
-          <h4>Steps:</h4>
+          
            <input type="file"  id="img" value="Pick"></input></br></br>
 
           <button onclick="addRecipe()" id="btnAdd" type="button">addRecipe</button>
         </form>
     
       </div>
-
+</div>
 
 
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -14,6 +14,14 @@ const database = firebase.database().ref();
 const LocationsRef = database.child('ShopLocation');
 
 const shopLocationList = document.getElementById('shopList');
+const names = document.getElementById('name');
+const subName = document.getElementById('subName');
+const latitude = document.getElementById('lat').value;
+const longtitude = document.getElementById('long').value;
+
+var lat = parseFloat(latitude);
+var long = parseFloat(longtitude);
+
 
 LocationsRef.on('value', snap => {
   shopLocationList.innerHTML = ""
@@ -56,17 +64,22 @@ function addShop(){
   const newShopRef = LocationsRef.push();
   const shopID = newShopRef.key;
 
-  const newShop = document.getElementsByClassName("shop-location");
+  // const newShop = document.getElementsByClassName("shop-location");
 
   let shop = {
-    key : shopID
+    name: names.value,
+    subName: "Postcode: " + subName.value,
+    lat: lat,
+    long: long,
+    key : shopID,
+    List : {test : "test"}
   };
 
-  for (let i = 0; i < newShop.length; i++){
-    let keys = newShop[i].getAttribute('data-shop');
-    let value = newShop[i].value;
-    shop[keys] = value;
-  }
+  // for (let i = 0; i < newShop.length; i++){
+  //   let keys = newShop[i].getAttribute('data-shop');
+  //   let value = newShop[i].value;
+  //   shop[keys] = value;
+  // }
 
   newShopRef.set(shop);
 }

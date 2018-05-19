@@ -13,9 +13,24 @@ firebase.initializeApp(config);
 var database = firebase.database().ref();
 
 //Login variables
-var login = document.getElementById('login');
-var email = document.getElementById('email');
-var pass = document.getElementById('pass');
+
+
+function login(){
+var email = document.getElementById('email').value;
+var password = document.getElementById('pass').value;
+var adminLogin = document.getElementById('loginPage');
+var home = document.getElementById('adminHome');
+
+    firebase.auth().signInWithEmailAndPassword(email, password).then(function(user){
+        adminLogin.style.display = 'none';
+        home.style.display = 'inline';
+    }).catch(function(error){
+        var errorCode = error.code;
+            console.log(errorCode.Message);
+    });
+
+}
+
 
 
 var recipeRef = database.child('Recipe');

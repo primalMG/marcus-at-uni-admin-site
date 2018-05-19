@@ -15,7 +15,7 @@ var config = {
     
     var names = document.getElementById('name');
     var currentPrice = document.getElementById('currentPrice');
-    var price = currentPrice.options[currentPrice.selectedIndex].text;
+    var price = currentPrice.options[currentPrice.selectedIndex].value;
 
     var img = document.getElementById('img');
     var imgs;
@@ -47,6 +47,7 @@ var config = {
         document.getElementById('ing').appendChild(div);
     }
 
+    
     function removeIng(id){
         // use the id arugment to get the div element using unique id set in addkid
     try{
@@ -135,7 +136,7 @@ var config = {
                 name: names.value,
                 recipeID: recipeId,    
                 price: price,
-                //img: downloadURL,
+                img: downloadURL,
                 Ingredients : {},
                 steps : {}
                 
