@@ -14,6 +14,7 @@ var config = {
     
     
     var names = document.getElementById('name');
+    var servings = document.getElementById('serving');
     var currentPrice = document.getElementById('currentPrice');
     var price = currentPrice.options[currentPrice.selectedIndex].value;
 
@@ -36,16 +37,16 @@ var config = {
         var id = getID();
 
         div.setAttribute("id","Div_"+id);
-
+        //creating a new text box and setting its values
         div.innerHTML = 'Ingredient_' + id + ': <input type="text" data-Ingredient="Ingreident' + id + '" class="Ingredient"/>' 
                                              + '<input type="button" id="removeIng()_' + id + '"onclick="removeIng('+id+')" value="remove" />'; 
-        
+        //appending the new text box to the page.
         document.getElementById('ing').appendChild(div);
     }
 
     
     function removeIng(id){
-        // use the id arugment to get the div element using unique id set in addkid
+        // use the id arugment to get the div element using unique id set in add Ingredient
     try{
         var element = document.getElementById("Div_"+id)
         element.parentNode.removeChild(element);
@@ -75,7 +76,7 @@ var config = {
     }
 
     function removeStep(id){
-        // use the id arugment to get the div element using unique id set in addkid
+        // use the id arugment to get the div element using unique id set in add Step
     try{
     var element = document.getElementById("Div_"+id)
     element.parentNode.removeChild(element);
@@ -133,6 +134,7 @@ var config = {
                 recipeID: recipeId,    
                 price: price,
                 img: downloadURL,
+                serving: servings.value,
                 Ingredients : {},
                 steps : {}
                 

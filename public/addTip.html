@@ -30,24 +30,27 @@
                   </ul>
                 </div>
               </nav>
-
+              <div class="container">
+                <div class="jumbotron">
+          
               <h4>Tips 'n' Tricks </h4>
               <ul id="tipsList"></ul>
 
               <form>
-                  <h4>Name:<input id="name" type="text" data-key="name" class="recipeDetails" placeholder="Recipe Name"></h4>
-                  <h4>brief:<input id="brief" type="text" data-key="brief" class="recipeDetails" placeholder="Recipe Name"></h4>
+                  <h4>Name:<input id="name" type="text" data-key="name" class="recipeDetails" placeholder="Tip Name" style="width: 300px;"></h4>
+                  <h4>brief:<input id="brief" type="text" data-key="brief" class="recipeDetails" placeholder="Brief description about the brief" style="width: 300px;"></h4>
                   
                   
-                      <div id="tip"><h5>Steps: <button onclick="addStep()" type="button">Add Step</button> </h5>
+                    <div id="tip"><h5>Steps: <button onclick="addStep()" type="button">Add Step</button> </h5>
                       
                     </div>
                   
                    <input type="file"  id="img" value="Pick"></input></br></br>
         
-                  <button onclick="addStep()" id="btnAdd" type="button">addRecipe</button>
+                  <button onclick="addTip()" id="btnAdd" type="button">Add Tip</button>
                 </form>
-
+              </div>
+            </div>
 
               
 

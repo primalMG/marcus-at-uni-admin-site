@@ -95,7 +95,8 @@ tipsRef.on('value', snap => {
             btnDelete.addEventListener('click', DeleteTip)
 
             $li.append(btnDelete);
-            $li.setAttribute('keyY', key);
+            $li.setAttribute('keyyy', key);
+            $li.addEventListener('click', tipClicked)
             tipList.append($li);
         });
 });
@@ -114,15 +115,44 @@ function recipeClicked(e){
     selectedRecipe.on('value', snap => {
         recipeDetail.innerHTML = ""
         snap.forEach(childSnap => {
-            console.log(childSnap)
             var $p = document.createElement("p");
             $p.innerHTML = childSnap.key + " - " + childSnap.val();
             recipeDetail.append($p)
+                childSnap.forEach(childSnap2 => {
+                    var $p = document.createElement("p");
+                    $p.innerHTML = childSnap2.key + " - " + childSnap2.val();
+                    recipeDetail.append($p)
+                });
         });
     });
 }
 
+function tipClicked(e){
+    var tipID = e.target.getAttribute('keyyy');
 
+    //creates a database reference
+    const selectedTip = database.child('Tips/' + tipID);
+    //gets an element by its ID
+    const tipDetail = document.getElementById('tipDetails');
+
+    //listens for the values within the snapshot.
+    selectedTip.on('value', snap => {
+        tipDetail.innerHTML = ""
+        //take the values within the snapshot
+        snap.forEach(childSnap => {
+            var $p = document.createElement("p");
+            //appends those values and their keys to the element p
+            $p.innerHTML = childSnap.key + " - " + childSnap.val();
+            tipDetail.append($p)
+            //takes the values within the nested object and appends them as well.
+            childSnap.forEach(childSnap2 => {
+                var $p = document.createElement("p");
+                $p.innerHTML = childSnap2.key + " - " + childSnap2.val();
+                tipDetail.append($p)
+            });
+        });
+    });
+}
 
 //update a recipe -- gonna be a challenge
 
@@ -140,12 +170,16 @@ function btnDeleteClicked(event){
 }
 
 function DeleteTip(event){
-    
+
+    //Prevents further propagation of the current event in the capturing and bubbling phases.
     event.stopPropagation();
 
+    //gets the selected recipe ID by the attribute.
     var tipID = event.target.getAttribute('TipchildKey');
 
+     //creates a reference to that child key within the database. 
     const recipeRef = database.child('Tips/' + tipID);
 
+    //removes the key and all values belonging to it from the database.
     recipeRef.remove();
 }

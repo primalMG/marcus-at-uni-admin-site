@@ -14,30 +14,6 @@ var tipRef = database.ref().child('Tips');
 
 var tipList = document.getElementById('tipsList');
 
-// tipRef.on('value', snap => {
-    
-//     tipList.innerHTML = ""
-
-//         snap.forEach(childSnap => {
-//             let key = childSnap.key,
-//                 value = childSnap.val();
-//             let $li = document.createElement('li');
-
-//             $li.innerHTML = value.name;
-
-//             let btnDelete = document.createElement("span");
-//             btnDelete.class = "deleteTip";
-//             btnDelete.innerHTML = ' Delete';
-//             btnDelete.setAttribute('TipchildKey', key);
-//             btnDelete.style.color = "#e20f24";
-//             btnDelete.addEventListener('click', btnDeleteClicked)
-
-//             $li.append(btnDelete);
-//             $li.setAttribute('keyY', key);
-//             tipList.append($li);
-//         });
-// });
-
     
 var names = document.getElementById('name');
 var brief = document.getElementById('brief');
@@ -58,14 +34,16 @@ function addStep(){
 
     div.setAttribute('id','Div_'+id);
 
-    div.innerHTML = 'Tip_' + id + ': <input type="text" data-tip="tip' + id + '" class="tip"/>'
+    //creating a new text box and setting its values
+    div.innerHTML = 'Tip_' + id + ': <input type="text" data-tip="tip' + id + '" class="tip" style="width: 300px;"/>'
      + '<input type="button" id="removeTip()_' + id + '"onclick="removeTip('+id+')" value="remove" />'
 
+     //appending the new text box to the page.
     document.getElementById('tip').appendChild(div);
 }
 
 function removeTip(id){
-    // use the id arugment to get the div element using unique id set in addkid
+// use the id arugment to get the div element using unique id set in addTip
 try{
 var element = document.getElementById("Div_"+id)
 element.parentNode.removeChild(element);
@@ -82,12 +60,16 @@ index[id] = -1;
 
 function btnDeleteClicked(event){
 
+    //Prevents further propagation of the current event in the capturing and bubbling phases.
     event.stopPropagation();
 
+    //gets the selected recipe ID by the attribute.
     var recipeID = event.target.getAttribute('childKey');
 
+    //creates a reference to that child key within the database. 
     const recipeRef = database.child('Recipe/' + recipeID);
 
+    //removes the key and all values belonging to it from the database.
     recipeRef.remove();
 }
 
@@ -110,9 +92,11 @@ function addTip(){
     // var upload = storageRef.put(imgs).then(function(snapshot) {
     //var downloadURL = snapshot.downloadURL;
     
+    //creates and the key for the child node.
     var newTipRef = tipRef.push();    
     var tipID = newTipRef.key;    
 
+    //object for the values
     var newTip  = {
         name: names.value,
         tipID: tipID,
@@ -121,14 +105,19 @@ function addTip(){
         steps: {}
     };
 
-    var steps = document.querySelectorAll('.step');
+    //gets all of the elements with the same class name
+    var steps = document.querySelectorAll('.tip');
     var s;
+    //loops through all those elements
         for(s = 0; s < steps.length; s++){
-            let key = steps[s].getAttribute('data-step');
+            //sets the key to for each child.
+            let key = steps[s].getAttribute('data-tip');
+            //sets the value for each key
             let value = steps[s].value;
+            //uploads the values to the nested object within the tip.
             newTip["steps"][key] = value;
         }
-
+    //pushed the object to the database, while pushing the key.     
     newTipRef.set(newTip);
    // });
 }
