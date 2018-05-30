@@ -2,7 +2,6 @@
     margin:0;
     padding:0;
     width:300px;
-    float:left;
     margin:10px;
     border:1px solid #6a3cc4;   
 }
@@ -10,18 +9,64 @@
 #recipeList li {
     list-style-type: none;
     padding:5px 10px;
-    border-top:1px solid #6a3cc4;
+    border-top:1px solid #004843;
+    background-color: #51BFB5;
     cursor: pointer;
     color:black;
     font-style: normal;
 }
 
+#tipsList li {
+    list-style-type: none;
+    padding:5px 10px;
+    border-top:1px solid #004843;
+    background-color: #51BFB5;
+    cursor: pointer;
+    color:black;
+    font-style: normal;
+}
+
+#tipsList {
+    margin:0;
+    padding:0;
+    width:300px;
+    margin:10px;
+    border:1px solid #6a3cc4;   
+}
+
+#tipDetails{
+    background-color: #51BFB5;
+}
+
+#RecipeDetails{
+    background-color: #51BFB5;
+}
+
 #recipeList li:hover {
-    background: #4fc3fc;
+    background: #9FE3DD;
 }
 
 #recipeList h2 {
     padding:10px;
     margin:0;
     color:white;
+}
+
+#edit-recipe-module {
+    display: none;
+    position: absolute;
+    background-color: #e1e1e1;
+    border: 1px solid #999;
+    top:149px;
+    left: 200px;
+    padding: 10px;
+    width: 300px;
+  }
+
+#loginPage{
+    background-color: #51BFB5;
+}
+
+#bg{
+    background-color: #11625B;
 }

@@ -58,7 +58,7 @@ recipeRef.on('value', snap => {
         btnEdit.innerHTML = ' Edit';
         btnEdit.setAttribute('childKey', key);
         btnEdit.style.color = "#6a3cc4";
-        //btnEdit.addEventListener('click', btnEditRecipe);
+        btnEdit.addEventListener('click', btnEditRecipe);
         $li.append(btnEdit)
     
         //Deleting a recipe
@@ -101,6 +101,47 @@ tipsRef.on('value', snap => {
         });
 });
 
+//marcus.gardner@students.plymouth.ac.uk
+function btnEditRecipe(e){
+    //displays the edit recipe section
+    document.getElementById('edit-recipe-module').style.display = "block";
+
+    //puts the recipe ID within a hidden text field
+    document.querySelector('.edit-recipeID').value = e.target.getAttribute('childKey');
+
+    //database reference.
+    const dbRef = database.child('Recipe/' + e.target.getAttribute('childKey'));
+    
+    const editRecipeUI = document.querySelectorAll('.recipeDetails');
+
+    dbRef.on('value', snap => {
+        for(var i = 0, len = editRecipeUI.length; i < len; i++){
+            var key = editRecipeUI[i].getAttribute('data-key');
+                editRecipeUI[i].value = snap.val()[key];
+            
+        }
+    });
+}
+
+function EditRecipe(e){
+    const recipeID = document.querySelector('.edit-recipeID').value;
+    const dbRef = database.child('Recipe/' + recipeID);
+
+    var editRecipe = {}
+
+    const editRecipeUI = document.querySelectorAll('.recipeDetails');
+
+    editRecipeUI.forEach(function(textField) {
+        let key = textField.getAttribute('data-key');
+        let value = textField.value;
+        editRecipe[textField.getAttribute('data-key')] = textField.value
+    });
+
+    dbRef.update(editRecipe);
+
+    document.getElementById('edit-recipe-module').style.display = "none";
+
+}
 
 function recipeClicked(e){
     var recipeID = e.target.getAttribute('keyy');

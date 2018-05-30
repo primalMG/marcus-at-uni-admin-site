@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Marcus at Uni</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
- 
+    <link rel="stylesheet" type="text/css" href="css.css">
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
   
   </head>
-  <body >
+  <body id="bg">
 <div class="container">
 
     <div id="loginPage" class="jumbotron">
@@ -48,7 +48,7 @@
       <h4>Recipes</h4>
       <div class="row">
             <div class="col-md">
-      <ul id="recipeList"></ul>
+      <ul id="recipeList"></ul><br>
 
       <h4>Details</h4>
       <div id="RecipeDetails"></div>
@@ -59,14 +59,31 @@
          <h4>Details</h4>
         <div id="tipDetails"></div>
       </div>
-      </div>
-  
-     
+    </div>
           </div>
      </div>
 
+     <section id="edit-recipe-module" style="display: none;">
+        <form>
+            <input type="hidden" class="edit-recipeID">
+            <h4>Name:<input id="name" type="text" data-key="name" class="recipeDetails" placeholder="Recipe Name"></h4>
+            <h4>Price:<select id="currentPrice" data-key="price" class="recipeDetails">
+              <option value="£">£</option>
+              <option value="££">££</option>
+              <option value="£££">£££</option>
+              <option value="££££">££££</option>
+            </select></h4>
+            <h4>Serving<input id="serving" type="text" data-key="serving" class="recipeDetails" placeholder="Serving amount"></h4>
+
+            
+             <input type="file"  id="img" value="Pick"></input></br></br>
+  
+            <button onclick="EditRecipe()" id="btnEdit" type="button">Edit Recipe</button>
+          </form>
+    </section>
 
      
      <script src="index.js"></script>
+     
   </body>
 </html>

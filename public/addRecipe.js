@@ -126,8 +126,6 @@ var config = {
             var newRecipeRef = recipeRef.push();
             
             var recipeId = newRecipeRef.key;
-         
-
             //populating the database with values from the DOMS 
             var newRecipe = {
                 name: names.value,
@@ -137,7 +135,6 @@ var config = {
                 serving: servings.value,
                 Ingredients : {},
                 steps : {}
-                
             };  
             
             var ingredients = document.querySelectorAll('.Ingredient');

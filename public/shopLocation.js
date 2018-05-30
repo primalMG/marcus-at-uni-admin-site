@@ -39,15 +39,63 @@ LocationsRef.on('value', snap => {
     btnDelete.innerHTML = ' Delete';
     btnDelete.setAttribute('childKey', key);
     btnDelete.style.color = "#e20f24";
-    btnDelete.addEventListener('click', btnDeleteClicked);        
+    btnDelete.addEventListener('click', btnDeleteClicked);
+    
+    //edit a shop
+    let btnEdit = document.createElement("span");
+    btnEdit.class = "editShop";
+    btnEdit.innerHTML = ' Edit';
+    btnEdit.setAttribute('childKey', key);
+    btnEdit.style.color = "#6a3cc4";
+    btnEdit.addEventListener('click', btnEditShop);
+    $li.append(btnEdit);
 
     $li.append(btnDelete)
     $li.setAttribute('key', key);
     shopLocationList.append($li);
-    //$li.addEventListener('click', )
   });
 }); 
 
+function btnEditShop(e){
+  document.getElementById('edit-shop-module').style.display = "block";
+
+  document.querySelector('.edit-shopID').value = e.target.getAttribute('childkey');
+
+  const dbRef = database.child('ShopLocation/' + e.target.getAttribute('childKey'));
+
+  const editShopUI = document.querySelectorAll('.shopDetails');
+
+  dbRef.on('value', snap => {
+    for(var i = 0, len = editShopUI.length; i < len; i++) {
+      var key = editShopUI[i].getAttribute('data-key');
+      editShopUI[i].value = snap.val()[key];
+    }
+  });
+  
+}
+
+function EditShop(e) {
+  
+ const shopID = document.querySelector('.edit-shopID').value;
+
+  const dbRef = database.child('ShopLocation/' + shopID);
+
+  var editShop = {}
+
+  const editShopUI = document.querySelectorAll('.shopDetails');
+
+
+  editShopUI.forEach(function(textField){
+    let key = textField.getAttribute('data-key');
+    let value = textField.value;
+    editShop[textField.getAttribute('data-key')] = textField.value;
+  });
+
+  dbRef.update(editShop);
+  
+  document.getElementById('edit-shop-module').style.display = "none";
+
+}
 //Delete
 function btnDeleteClicked(event){
 
@@ -64,22 +112,13 @@ function addShop(){
   const newShopRef = LocationsRef.push();
   const shopID = newShopRef.key;
 
-  // const newShop = document.getElementsByClassName("shop-location");
-
   let shop = {
     name: names.value,
     subName: "Postcode: " + subName.value,
     lat: lat,
     long: long,
     key : shopID,
-    List : {test : "test"}
   };
-
-  // for (let i = 0; i < newShop.length; i++){
-  //   let keys = newShop[i].getAttribute('data-shop');
-  //   let value = newShop[i].value;
-  //   shop[keys] = value;
-  // }
 
   newShopRef.set(shop);
 }

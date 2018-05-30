@@ -1,0 +1,26 @@
+.jumbotron{
+    background-color: #51BFB5;
+    text-align: center;
+}
+
+#bg{
+    background-color: #11625B;
+}
+
+#shopList {
+    margin:0;
+    padding:0;
+    width:300px;
+    margin:10px;
+    border:1px solid #6a3cc4;   
+}
+
+#shopList li {
+    list-style-type: none;
+    padding:5px 10px;
+    border-top:1px solid #004843;
+    background-color: #51BFB5;
+    cursor: pointer;
+    color:black;
+    font-style: normal;
+}

@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+    <link rel="stylesheet" type="text/css" href="shop.css">
     <title>Shop Locations</title>
 </head>
-<body>
+<body id="bg">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="index.html">Marcus At Uni - Admin Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,8 +31,11 @@
                   </ul>
                 </div>
               </nav>
+      <div class="container">
+        <div class="jumbotron">
 
-       <div class="container">
+        
+       <div class="col-md">
                 <form>
                     <h2>Add Shop</h2>
                     Name:
@@ -44,16 +48,32 @@
                     <input type='text' id="long" value="-"><br><br>
                     <button type='button' onclick="addShop()">add Shop</button>
                 </form>
-         </div><br>
+         </div>
 
-    <div class="container">
+    <div class="col-md">
         <div id="shopLocation">
             <ul id="shopList"></ul>
-
             <div id="shopDetails"></div>
         </div>
     </div>
+    </div>
+    <section id="edit-shop-module" style="display: none;">
+        <form>
+            <input type="hidden" class="edit-shopID">
+            Name:
+            <input type='text' data-key="name" id="name" class="shopDetails"><br><br>
+            Postcode:
+            <input type='text' data-key="subName" id="subName" class="shopDetails"><br><br>
+            Latitude:
+            <input type='text' data-key="lat" id="lat" class="shopDetails"><br><br>
+            Longitude:
+            <input type='text' data-key="long" id="long" value="-" class="shopDetails"><br><br>
 
+            <button onclick="EditShop()" id="btnEdit" type="button">Edit Shop</button>
+          </form>
+    </section>
+
+  </div>
     <script src="shopLocation.js"></script>
 </body>
 </html>

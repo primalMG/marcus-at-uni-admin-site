@@ -18,12 +18,6 @@ var tipList = document.getElementById('tipsList');
 var names = document.getElementById('name');
 var brief = document.getElementById('brief');
 
-var img = document.getElementById('img');
-var imgs;
-
-img.addEventListener('change', function(e){
-    imgs = e.target.files [0];
-});
 
 var index = [];
 index.push(0);
@@ -88,10 +82,6 @@ function getTipID(){
 }
 
 function addTip(){
-    // var storageRef = firebase.storage().ref('Food_pics/' + imgs.name);
-    // var upload = storageRef.put(imgs).then(function(snapshot) {
-    //var downloadURL = snapshot.downloadURL;
-    
     //creates and the key for the child node.
     var newTipRef = tipRef.push();    
     var tipID = newTipRef.key;    
@@ -101,7 +91,6 @@ function addTip(){
         name: names.value,
         tipID: tipID,
         brief: brief.value,
-        //img: downloadURL,
         steps: {}
     };
 
@@ -119,5 +108,4 @@ function addTip(){
         }
     //pushed the object to the database, while pushing the key.     
     newTipRef.set(newTip);
-   // });
 }
