@@ -24,3 +24,14 @@
     color:black;
     font-style: normal;
 }
+
+#edit-shop-module {
+    display: none;
+    position: absolute;
+    background-color: #e1e1e1;
+    border: 1px solid #999;
+    top:149px;
+    left: 200px;
+    padding: 10px;
+    width: 300px;
+  }

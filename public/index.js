@@ -101,7 +101,7 @@ tipsRef.on('value', snap => {
         });
 });
 
-//marcus.gardner@students.plymouth.ac.uk
+
 function btnEditRecipe(e){
     //displays the edit recipe section
     document.getElementById('edit-recipe-module').style.display = "block";

@@ -14,13 +14,10 @@ const database = firebase.database().ref();
 const LocationsRef = database.child('ShopLocation');
 
 const shopLocationList = document.getElementById('shopList');
-const names = document.getElementById('name');
-const subName = document.getElementById('subName');
-const latitude = document.getElementById('lat').value;
-const longtitude = document.getElementById('long').value;
 
-var lat = parseFloat(latitude);
-var long = parseFloat(longtitude);
+
+
+
 
 
 LocationsRef.on('value', snap => {
@@ -80,16 +77,30 @@ function EditShop(e) {
 
   const dbRef = database.child('ShopLocation/' + shopID);
 
-  var editShop = {}
+  const names = document.getElementById('editName');
+const subName = document.getElementById('editSubName');
+const latitude = document.getElementById('editLat').value;
+const longtitude = document.getElementById('editLong').value;
 
-  const editShopUI = document.querySelectorAll('.shopDetails');
+var lats = parseFloat(latitude);
+var longs = parseFloat(longtitude);
 
 
-  editShopUI.forEach(function(textField){
-    let key = textField.getAttribute('data-key');
-    let value = textField.value;
-    editShop[textField.getAttribute('data-key')] = textField.value;
-  });
+  var editShop = {
+      name : names.value,
+      subName: subName.value,
+      lat: lats,
+      long: longs,
+  }
+
+  // const editShopUI = document.querySelectorAll('.shopDetails');
+
+
+  // editShopUI.forEach(function(textField){
+  //   let key = textField.getAttribute('data-key');
+  //   let value = textField.value;
+  //   editShop[textField.getAttribute('data-key')] = textField.value;
+  // });
 
   dbRef.update(editShop);
   
@@ -112,11 +123,19 @@ function addShop(){
   const newShopRef = LocationsRef.push();
   const shopID = newShopRef.key;
 
+const names = document.getElementById('name');
+const subName = document.getElementById('subName');
+const latitude = document.getElementById('lat').value;
+const longtitude = document.getElementById('long').value;
+
+var lats = parseFloat(latitude);
+var longs = parseFloat(longtitude);
+
   let shop = {
     name: names.value,
-    subName: "Postcode: " + subName.value,
-    lat: lat,
-    long: long,
+    subName: + subName.value,
+    lat: lats,
+    long: longs,
     key : shopID,
   };
 
